@@ -77,7 +77,7 @@ public class Main {
 
     public static double calcularTotal(ArrayList<Double> montos){
         Double total=0.0;
-        if (montos.size()!=0){
+        if (!montos.isEmpty()){
             for (Double monto:montos)
             {
                 total+=monto;
@@ -91,7 +91,7 @@ public class Main {
         int indexGastoMayor=-1;
         Double montoMayor = 0.0;
 
-        if (montos.size() != 0) {
+        if (!montos.isEmpty()) {
             for (int i = 0; i < montos.size(); i++) {
                 if (montos.get(i) > montoMayor) {
                     montoMayor = montos.get(i);
