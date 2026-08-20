@@ -12,6 +12,8 @@ public class Main {
         System.out.println("\n Gestor semanal de gastos");
 
         registrarGasto(conceptos, categorias, montos,entrada);
+        registrarGasto(conceptos, categorias, montos,entrada);
+        mostrarGastos(conceptos, categorias, montos);
     }
 
     public static void registrarGasto(
@@ -38,7 +40,7 @@ public class Main {
                 i++;
             }
             System.out.print("Introduce el número de categoría: ");
-            catNumber=entrada.nextInt();
+            catNumber=Integer.parseInt(entrada.nextLine());
 
             if (catNumber<0 || catNumber>4){
                 System.out.println("Las categorías disponibles están entre 0 y 4");
@@ -48,7 +50,7 @@ public class Main {
         //Ciclo para pedir y validar el monto del gasto que debe ser mayor que cero
         do {
             System.out.print("Introduce el monto: ");
-            monto = entrada.nextDouble();
+            monto = Double.parseDouble(entrada.nextLine());
             if (monto<=0)
             {
                 System.out.println("El monto del gasto debe ser mayor a 0");
@@ -62,6 +64,16 @@ public class Main {
 
     }
 
-
+    public static void mostrarGastos(
+            ArrayList<String> conceptos,
+            ArrayList<String> categorias,
+            ArrayList<Double> montos)
+    {
+        String[] listaCategorias={"Alimentos","Transporte","Materiales escolares", "Entretenimiento", "Otros"};
+        System.out.println("GASTOS REGISTRADOS ");
+        for (int i=0;i<conceptos.size();i++){
+            System.out.print(conceptos.get(i)+"\t|"+ categorias.get(i)+"\t|"+montos.get(i)+"\n");
+        }
+    }
 
 }
