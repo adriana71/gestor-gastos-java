@@ -69,7 +69,6 @@ public class Main {
             ArrayList<String> categorias,
             ArrayList<Double> montos)
     {
-        String[] listaCategorias={"Alimentos","Transporte","Materiales escolares", "Entretenimiento", "Otros"};
         System.out.println("GASTOS REGISTRADOS ");
         for (int i=0;i<conceptos.size();i++){
             System.out.print(conceptos.get(i)+"\t|"+ categorias.get(i)+"\t|"+montos.get(i)+"\n");
