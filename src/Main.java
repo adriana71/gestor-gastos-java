@@ -75,4 +75,69 @@ public class Main {
         }
     }
 
+    public static double calcularTotal(ArrayList<Double> montos){
+        Double total=0.0;
+        if (!montos.isEmpty()){
+            for (Double monto:montos)
+            {
+                total+=monto;
+            }
+
+        }
+        return total;
+    }
+
+    public static int obtenerPosicionGastoMayor(ArrayList<Double> montos) {
+        int indexGastoMayor=-1;
+        Double montoMayor = 0.0;
+
+        if (!montos.isEmpty()) {
+            for (int i = 0; i < montos.size(); i++) {
+                if (montos.get(i) > montoMayor) {
+                    montoMayor = montos.get(i);
+;                    indexGastoMayor = i;
+                }
+            }
+        }
+        return indexGastoMayor;
+    }
+
+    public static double calcularTotalPorCategoria (ArrayList<String> categorias,
+                                                    ArrayList<Double> montos,
+                                                    String categoriaBuscada) {
+        double flagMonto=-1;
+        if (!categorias.isEmpty()){
+            for (int i=0;i<categorias.size();i++){
+                if(categorias.get(i).equals(categoriaBuscada)){
+                    return montos.get(i);
+                }
+            }
+        }
+        return flagMonto;
+    }
+
+    public static void mostrarResumen(
+                                    ArrayList<String> conceptos,
+                                    ArrayList<String> categorias,
+                                    ArrayList<Double> montos
+                                    ) {
+
+        if (!conceptos.isEmpty())
+        {   int numeroGastos=0;
+            Double gastoTotal=0.0;
+            Double promedio=0.0;
+            int indiceMayor=obtenerPosicionGastoMayor(montos);
+
+            numeroGastos=conceptos.size();
+            gastoTotal=calcularTotal(montos);
+            System.out.println("\nRESUMEN SEMANAL\n");
+            System.out.println("Número de gastos: "+numeroGastos);
+            System.out.println("Gasto total"+gastoTotal);
+            System.out.println("Promedio por gasto"+gastoTotal/numeroGastos);
+            System.out.println("Gasto mayor: "+conceptos.get(indiceMayor)+" , "+ montos.get(indiceMayor));
+        } else {
+            System.out.println("No hay gastos registrados en la semana");
+        }
+
+    }
 }
